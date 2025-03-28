@@ -5,9 +5,9 @@ import io.github.lama06.schneckenhaus.command.Command;
 import io.github.lama06.schneckenhaus.command.Require;
 import io.github.lama06.schneckenhaus.shell.shulker.ShulkerShellConfig;
 import io.github.lama06.schneckenhaus.shell.shulker.ShulkerShellFactory;
+import io.github.lama06.schneckenhaus.util.scheduler.SchedulerManager;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ComponentBuilder;
-import org.bukkit.Bukkit;
 import org.bukkit.DyeColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -26,7 +26,7 @@ public final class CreateShellsCommand extends Command {
         final RandomGenerator rnd = ThreadLocalRandom.current();
         for (int i = 0; i < COUNT; i++) {
             final int finalI = i;
-            Bukkit.getScheduler().runTaskLater(SchneckenPlugin.INSTANCE, () -> {
+            SchedulerManager.getAdapter().runTaskLater(SchneckenPlugin.INSTANCE, () -> {
                 final ShulkerShellFactory factory = ShulkerShellFactory.INSTANCE;
                 final int size = factory.getMinSize() + rnd.nextInt(factory.getMaxSize() - factory.getMinSize() + 1);
                 final DyeColor[] dyeColors = DyeColor.values();

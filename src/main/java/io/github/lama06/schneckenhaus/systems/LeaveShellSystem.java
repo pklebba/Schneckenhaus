@@ -5,6 +5,7 @@ import io.github.lama06.schneckenhaus.player.SchneckenPlayer;
 import io.github.lama06.schneckenhaus.position.CoordinatesGridPosition;
 import io.github.lama06.schneckenhaus.position.GridPosition;
 import io.github.lama06.schneckenhaus.shell.Shell;
+import io.github.lama06.schneckenhaus.util.scheduler.SchedulerManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.Tag;
@@ -17,7 +18,11 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 public final class LeaveShellSystem implements Listener {
     public LeaveShellSystem() {
-        Bukkit.getScheduler().runTaskTimer(SchneckenPlugin.INSTANCE, this::detectPlayerLeaveSnailShellUnexpectedly, 0, 1);
+        SchedulerManager.getAdapter().runTaskTimer(
+            SchneckenPlugin.INSTANCE, 
+            this::detectPlayerLeaveSnailShellUnexpectedly, 
+            0, 1
+        );
     }
 
     @EventHandler

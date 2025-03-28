@@ -5,6 +5,7 @@ import io.github.lama06.schneckenhaus.config.ConfigException;
 import io.github.lama06.schneckenhaus.recipe.RecipeManager;
 import io.github.lama06.schneckenhaus.systems.Systems;
 import io.github.lama06.schneckenhaus.update.ConfigurationUpdater;
+import io.github.lama06.schneckenhaus.util.scheduler.SchedulerManager;
 import io.github.lama06.schneckenhaus.util.BuildProperties;
 import io.github.lama06.schneckenhaus.util.PluginVersion;
 import org.bstats.bukkit.Metrics;
@@ -60,6 +61,7 @@ public final class SchneckenPlugin extends JavaPlugin {
         recipeManager.registerRecipes();
         command = new SchneckenCommand();
 
+        SchedulerManager.initialize(this);
         Systems.start();
 
         try {
